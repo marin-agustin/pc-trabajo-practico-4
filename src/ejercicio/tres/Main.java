@@ -4,9 +4,9 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
 
-    private Semaphore sem1 = new Semaphore(1);
-    private Semaphore sem2 = new Semaphore(0);
-    private Semaphore sem3 = new Semaphore(0);
+    private final Semaphore sem1 = new Semaphore(1);
+    private final Semaphore sem2 = new Semaphore(0);
+    private final Semaphore sem3 = new Semaphore(0);
 
     public static void main(String[] args) {
 
