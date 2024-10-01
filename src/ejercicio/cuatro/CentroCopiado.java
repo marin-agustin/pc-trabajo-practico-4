@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 
 public class CentroCopiado {
 
-    private Semaphore impresorasDisponibles;
+    private final Semaphore impresorasDisponibles;
 
     public CentroCopiado(int numeroImpresoras) {
         impresorasDisponibles = new Semaphore(numeroImpresoras);
@@ -12,14 +12,14 @@ public class CentroCopiado {
 
     public void solicitarImpresora() {
         try {
-            System.out.println("Cliente " + Thread.currentThread().getId() + " esta esperando una impresora");
+            System.out.println("Cliente " + Thread.currentThread().getName() + " esta esperando una impresora");
             impresorasDisponibles.acquire();
-            System.out.println("Cliente " + Thread.currentThread().getId() + " esta utilizando una impresora");
+            System.out.println("Cliente " + Thread.currentThread().getName() + " esta utilizando una impresora");
             imprimir();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Cliente " + Thread.currentThread().getId() + " ha terminado de utilizar la impresora");
+            System.out.println("Cliente " + Thread.currentThread().getName() + " ha terminado de utilizar la impresora");
             impresorasDisponibles.release();
         }
     }
